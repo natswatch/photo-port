@@ -109,13 +109,13 @@ const PhotoList = ({category}) => {
 
     const toggleModal= (image, i) => {
       setCurrentPhoto({...image, index: i})
-      setIsModalOpen(true);
+      setIsModalOpen(!isModalOpen);
     }
 
     //renders each photo from the category
     return (
         <div className="flex.row">
-          {isModalOpen && <Modal currentPhoto={currentPhoto}/>}
+          {isModalOpen && <Modal currentPhoto={currentPhoto} onClose={toggleModal}/>}
             {currentPhotos.map((image, i) => (
               <img
                 src={require(`../../assets/small/${category}/${i}.jpg`).default}
